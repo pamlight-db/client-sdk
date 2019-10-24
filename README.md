@@ -1,15 +1,37 @@
-# Realtime Database Client
-    The library for syncing data changes with @real-db/core library implementation on the backend
+## Pamlight Client SDK
 
-# Features
-    Coming soon...
+#### Getting started
+> import { PamlightClient } from '@pamlight/client';
 
-# Commands
-- `npm test` - Run tests with linting and coverage results.
+> const config = {  
+&nbsp;&nbsp;&nbsp;&nbsp;projectId: _`<PROJECT_ID>`_  
+};  
+const client = new PamlightClient(config);  
+client.connect();
 
-# Installation
-`npm install --save @real-db/client`
+#### sync data from backend
 
 
-# License
-ISC
+
+
+
+
+
+
+// continue from herre.......................
+> const routeConfig = {  
+&nbsp;&nbsp;&nbsp;&nbsp;routeId: 'USERS_ROUTE',  
+&nbsp;&nbsp;&nbsp;&nbsp;collection:  'users',  
+&nbsp;&nbsp;&nbsp;&nbsp;isSingleDocument: false  
+};
+
+> admin.route(routeConfig).query(params => {  
+&nbsp;&nbsp;&nbsp;&nbsp;return {age: {$gte: 18}};  
+});
+
+#### start service after route configurations
+> admin.run().then(() => {  
+&nbsp;&nbsp;&nbsp;&nbsp;console.log('Pamlight service started');  
+}).catch(err => {  
+&nbsp;&nbsp;&nbsp;&nbsp;throw Error(err);  
+});

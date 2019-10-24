@@ -3,7 +3,7 @@ import {
     SocketRequestPayload, IObjectMap,
     ClientSyncActionPayload, PamlightSyncResponsePayload,
     PamlightUtilities, SyncActionTypes,
-    SettingsConfig, PamlightConstants, WriteOperationResponse
+    PamlightConstants, WriteOperationResponse, SettingsConfig
 } from '../shared';
 import { connect } from 'socket.io-client';
 import { Observable, interval, Subject } from 'rxjs';
