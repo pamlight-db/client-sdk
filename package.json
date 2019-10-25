@@ -1,6 +1,6 @@
 {
     "name": "@pamlight/client",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "The library for syncing data changes to multiple devices from your database",
     "main": "index.js",
     "typings": "dist/index",

@@ -3,7 +3,7 @@ import {
     SocketRequestPayload, IObjectMap,
     ClientSyncActionPayload, PamlightSyncResponsePayload,
     PamlightUtilities, SyncActionTypes,
-    PamlightConstants, WriteOperationResponse, SettingsConfig
+    PamlightConstants, WriteOperationResponse
 } from '../shared';
 import { connect } from 'socket.io-client';
 import { Observable, interval, Subject } from 'rxjs';
@@ -11,6 +11,7 @@ import { PamlightClientService } from '../services';
 import { skipWhile, take, map, finalize } from 'rxjs/operators';
 import { ClientSyncStore } from './sync';
 import { cloneDeep, keys } from 'lodash';
+import { SettingsConfig } from '../env-config';
 
 export class PamlightClient {
     public utilities: PamlightUtilities;
