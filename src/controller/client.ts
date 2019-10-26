@@ -22,17 +22,28 @@ export class PamlightClient {
     private clientService: PamlightClientService;
     private syncStore: ClientSyncStore;
     private checkedRoutes: IObjectMap<boolean> = {};
+    private production: boolean;
 
     constructor(config: PamlightClientConfig) {
         this._config = config;
+        this.production = true;
         this.clientService = new PamlightClientService();
         this.syncStore = new ClientSyncStore();
         this.utilities = this.createUtilitiesObject();
     }
 
+    // for dev purpose
+    public enableDevMode(): void {
+        if (this._socket) {
+            throw Error('Cannot enable dev mode after connection init');
+        }
+
+        this.production = false;
+    }
+
     public connect(): Promise<void> {
         return new Promise((resolve, reject) => {
-            this._socket = connect(SettingsConfig.socketServer);
+            this._socket = connect(this.production ? SettingsConfig.socketServer : 'http://localhost:8001');
             this.handleSocketBackgroundProcesses();
 
             this.handleConnectionInit().then(() => {

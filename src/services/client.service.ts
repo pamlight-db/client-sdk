@@ -1,5 +1,3 @@
-import { sha1 } from 'object-hash';
-
 export class PamlightClientService {
     constructor() { }
 
@@ -7,7 +5,8 @@ export class PamlightClientService {
         let respId = `${projectId}_${routeId}_${type}_`;
 
         if (query) {
-            respId += `${sha1(query)}`;
+            // find a good hash mechanism here
+            respId += JSON.stringify({ data: query });
         }
 
         return respId;
