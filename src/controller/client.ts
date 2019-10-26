@@ -43,7 +43,9 @@ export class PamlightClient {
 
     public connect(): Promise<void> {
         return new Promise((resolve, reject) => {
-            this._socket = connect(this.production ? SettingsConfig.socketServer : 'http://localhost:8001');
+            const domain = this.production ? SettingsConfig.socketServer : 'http://localhost:8002';
+
+            this._socket = connect(domain);
             this.handleSocketBackgroundProcesses();
 
             this.handleConnectionInit().then(() => {
