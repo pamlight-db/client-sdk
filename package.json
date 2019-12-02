@@ -1,6 +1,6 @@
 {
     "name": "@pamlight/client",
-    "version": "0.0.11",
+    "version": "0.1.1",
     "description": "The library for syncing data changes to multiple devices from your database",
     "main": "index.js",
     "typings": "dist/index",
@@ -27,7 +27,7 @@
         "type": "git",
         "url": "git+https://github.com/pamlight-db/client-sdk"
     },
-    "homepage": "https://pamlight.com",
+    "homepage": "https://docs.pamlight.com",
     "dependencies": {
         "@types/socket.io-client": "^1.4.32",
         "lodash": "^4.17.15",

@@ -71,12 +71,3 @@ export interface PamlightApiResponse {
     timestamp: Date;
     data?: any;
 }
-
-export interface WriteDocOption {
-    query?: IObjectMap<any>;
-    payload?: any;
-    upsert?: boolean;
-    result?: any;     // result to return to user when done execution
-    customData?: any; // data user wants to pass from one route to another E.g trigger
-    error?: any;      // error body if any occurs during the execution flow
-}

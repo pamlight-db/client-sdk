@@ -22,6 +22,7 @@ export class PamlightClient {
     private clientService: PamlightClientService;
     private syncStore: ClientSyncStore;
     private checkedRoutes: IObjectMap<boolean> = {};
+    private checkedWriteRoutes: IObjectMap<boolean> = {};
     private production: boolean;
 
     constructor(config: PamlightClientConfig) {
@@ -175,7 +176,7 @@ export class PamlightClient {
                 }
             });
 
-            // listens for response
+            // listens for error response
             this._socket.once(`${responseId}_ERROR`, (err: any) => {
                 reject(err);
             });
@@ -190,6 +191,15 @@ export class PamlightClient {
                     routeId
                 }
             );
+
+            if (!this.checkedWriteRoutes[routeId]) {
+                this.checkedWriteRoutes[routeId] = true;
+
+                this._socket.emit(`${this._config.projectId}_${PamlightConstants.UTILITIES_VALIDATE_WRITE}`, {
+                    responseId,
+                    routeId
+                });
+            }
         });
     }
 
@@ -224,7 +234,7 @@ export class PamlightClient {
         this.validateSync(storeData);
     }
 
-    public validateSync(data: ClientSyncActionPayload): void {
+    private validateSync(data: ClientSyncActionPayload): void {
         if (!this.checkedRoutes[data.routeId]) {
             this.checkedRoutes[data.routeId] = true;
 

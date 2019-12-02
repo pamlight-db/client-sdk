@@ -8,12 +8,3 @@ export enum WriteOperationTypes {
     UPDATE,
     DELETE
 }
-
-export enum PamlightDBWriteTypes {
-    CREATE_DOCUMENT = 1,
-    CREATE_DOCUMENTS,
-    UPDATE_DOCUMENT,
-    UPDATE_DOCUMENTS,
-    DELETE_DOCUMENT,
-    DELETE_DOCUMENTS
-}
